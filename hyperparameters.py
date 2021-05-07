@@ -57,16 +57,11 @@ class Hyperparameters(JsonifiableObject):
         self.num_iterations = 40
         self.save_at = [1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40]
 
-        self.print_every = 200
-
-        self.classification_strategy = "multi" # If "init": initialize the classifier weights after each iteration
-                                        # If "continue": continue with the same weights 
+        self.print_every = 200 
 
         self.gpu = True
         self.pretrain_autoencoder = True
-        # self.pretrained_autoencoder_filepath = "saved/pretrained/2021-03-02 11:01:12/autoencoder_2layers.pt"
-        # self.pretrained_autoencoder_filepath = "saved/pretrained/2021-03-16 15:47:07/autoencoder_2layers.pt"
-        self.pretrained_autoencoder_filepath = "saved/pretrained/2021-03-17 13:03:39/autoencoder_2layers.pt"
+        self.pretrained_autoencoder_filepath = "saved/pretrained/2021-05-07 17:11:55/autoencoder.pt"
 
         self.random_seed = 0
         self.torch_seed = 0
@@ -79,7 +74,7 @@ class Hyperparameters(JsonifiableObject):
 class PretrainingHyperparameters(Hyperparameters):
 
     def __init__(self):
-        super(PretrainingHyperparameters_2Layers, self).__init__()
+        super(PretrainingHyperparameters, self).__init__()
 
         self.save_model = "saved/pretrained/"
         self.num_epochs_autoencoder = 315

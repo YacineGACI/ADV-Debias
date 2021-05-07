@@ -29,16 +29,3 @@ class AdversarialLoss(nn.Module):
         uniform = torch.tensor([[1/self.num_classes] * self.num_classes] * predictions.shape[0]).to(self.device)
         return self.kl_div(log_softmax_logits, uniform)
 
-
-class ReconstructionLoss(nn.Module):
-    def __init__(self, reduction="mean"):
-        super(ReconstructionLoss, self).__init__()
-        self.reduction = reduction
-        self.cosine = nn.CosineSimilarity(dim=1)
-
-    def forward(self, input, reconstruction):
-        loss = torch.abs(self.cosine(reconstruction, input) - 1)
-        if self.reduction == "mean":
-            return torch.mean(loss)
-        if self.reduction == "sum":
-            return torch.sum(loss)
